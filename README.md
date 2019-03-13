@@ -8,7 +8,22 @@ In this control problem we have a 2D Quadrotor with a load attached through a ch
 <img src="graphics/HybrSystem.png">
 </p>
 
-The window has a height of a, with a<l, so we have now the control problem: Let’s make the quadrotor cross the window in order to take the system to the other side of the window.
+We have the first mode of the system, when the chord is tensed or "AsOne":
+
+<p align="center">
+<img src="graphics/eqasone.png">
+</p>
+
+The constants are related to the masses, inertias and lengths of the system.
+ 
+The dynamics of the second mode of the system, when the load is detached or "Flight", are:
+ 
+<p align="center">
+<img src="graphics/eqflight.png">
+</p>
+
+
+In the first figure, the height of the window has a height of a, with a<l, so we have now the control problem: Let’s make the quadrotor cross the window in order to take the system to the other side of the window. Note that the quadrotor must do a "trick" to make that, like throwing the ball there, because it can't cross the window directly.
 
 After performing Hybrid Trajectory Optimization, specifically Direct Collocation, we get the following local optimal trajectory for a LQR cost function:
 
