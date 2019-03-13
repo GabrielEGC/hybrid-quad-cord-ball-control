@@ -31,7 +31,13 @@ After performing Hybrid Trajectory Optimization, specifically Direct Collocation
 <img src="graphics/orig.png">
 </p>
 
-But Trajectory Optimization gives a control signal in time, not feedback, open loop, which are in general not robust. In order to make it robust we perform an Hybrid TV-LQR, which is the same as TV-LQR but with a "Jump Riccate Equation" associated to the transitions between modes in the Hybrid System. We got an robust controller for the trajectory computed before.
+But Trajectory Optimization gives a control signal in time, not feedback, open loop, which are in general not robust. In order to make it robust we perform an Hybrid TV-LQR, which is the same as TV-LQR but with a "Jump Riccati Equation" associated to the transitions between modes in the Hybrid System. We got an robust controller for the trajectory computed before. So, for the optimization we have:
+
+<p align="center">
+<img src="graphics/JumpRiccati.png">
+</p>
+
+We run the TVLQR controller and we get as performance:
 
 <p align="center">
 <img src="graphics/TVLQR2.gif">
