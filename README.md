@@ -31,6 +31,8 @@ After performing Hybrid Trajectory Optimization, specifically Direct Collocation
 <img src="graphics/orig.png">
 </p>
 
+Optimization was done using drake library and SNOPT as solver. Drake version used was the same as the Repository from the PSETs of Underactuated Robotics 6.832x, a precompiled one for MATLAB. Some changes were made to the code, these are explained at the end of the pdf file.
+
 But Trajectory Optimization gives a control signal in time, not feedback, open loop, which are in general not robust. In order to make it robust we perform an Hybrid TV-LQR, which is the same as TV-LQR but with a "Jump Riccati Equation" associated to the transitions between modes in the Hybrid System. We got an robust controller for the trajectory computed before. So, for the optimization we have:
 
 <p align="center">
@@ -45,4 +47,4 @@ We run the TVLQR controller and we get as performance:
 
 Note that initial conditions here are *(x,y)=(-1,-1)* instead of *(0,0)*. We can see how the quad leans towards applies force trying to reach their desired trajectory, and get it close to the original trajectory. The must importante part here is the state of the system at the change from the first mode to the second mode, because in the second mode the ball is uncontrolable (chord is not acting). So we can tune some values, we can even compute a penalization for the difference between the state and desired state at the time of the jump. We can put that computed penalization formula on the solver, for better performance, and we can also compute the region of attraction with Lyapunov functions, but for this demo this is enough.
 
-Also some changes in original code from drake were made to allow, some of them are needed because are bugs an other is a minihack to the system. This changes are explained in the pdf file.
+Also some changes in original code from drake were made to allow, some of them are needed because are bugs an other is a minihack to the system. This changes must be made also in the last precompiled version from Drake v0.9.11 found at https://github.com/RobotLocomotion/drake/releases. This changes are explained in the pdf file.
