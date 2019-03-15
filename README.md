@@ -1,6 +1,8 @@
 # hybrid-quad-cord-ball-control
 Trajectory Optimization Control and Robustness of an Hybrid system, a 2D Quadcopter with a cord attached to a ball.
 
+
+
 In this control problem we have a 2D Quadrotor with a load attached through a chord, which is able to exert a pulling force on the drone behaving as a Hybrid System. The system is very similar to a 2D Quadrotor with a pendulum, with the difference that, when the inner tension forces inside the “pendulum” (chord in this case) are negative, the system will behave in a very different way. In fact, the load will be “detached” from the quadrotor and will behave as a free-falling ball, while the quadrotor will behave as a single and simple Quad. This behavior will take place as long as the distance from the load to the quad is less than *l*, the length of the chord. When the equality takes place, the instantaneous tension of the chord, will be modeled as a common impact between objects. If the collision is inelastic, the two bodies will behave as a quad with pendulum again, this is the first mode of the hybrid system. If the collision is elastic, the load will bounce, going back to the second mode (load “detached” of “flying”), but with a reset map applied.
 
 
@@ -48,3 +50,5 @@ We run the TVLQR controller and we get as performance:
 Note that initial conditions here are *(x,y)=(-1,-1)* instead of *(0,0)*. We can see how the quad leans towards, applies force trying to reach their desired trajectory, and get it close to the original trajectory. The most important part here is the state of the system at the guard from the first to the second mode, because in this last mode the ball is uncontrolable (chord is not acting). So we can tune some values, we can even compute a penalization for the difference between the state and desired state at the time of the jump. We can put that computed penalization formula on the solver, for better performance, and we can also compute the region of attraction with Lyapunov functions, but for this demo this is enough.
 
 Also some changes in original code from drake were made to allow, some of them are needed because are bugs an other is a minihack to the system. This changes must be made also in the last precompiled version from Drake v0.9.11 found at https://github.com/RobotLocomotion/drake/releases. This changes are explained in the pdf file.
+
+*Note: Put the folder QuadLoad in "drake-distro\drake\examples\"
