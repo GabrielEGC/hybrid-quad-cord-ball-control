@@ -49,6 +49,6 @@ We run the TVLQR controller and we get as performance:
 
 Note that initial conditions here are *(x,y)=(-1,-1)* instead of *(0,0)*. We can see how the quad leans towards, applies force trying to reach their desired trajectory, and get it close to the original trajectory. The most important part here is the state of the system at the guard from the first to the second mode, because in this last mode the ball is uncontrolable (chord is not acting). So we can tune some values, we can even compute a penalization for the difference between the state and desired state at the time of the jump. We can put that computed penalization formula on the solver, for better performance, and we can also compute the region of attraction with Lyapunov functions, but for this demo this is enough.
 
-Also some changes in original code from drake were made to allow, some of them are needed because are bugs an other is a minihack to the system. This changes must be made also in the last precompiled version from Drake v0.9.11 found at https://github.com/RobotLocomotion/drake/releases. This changes are explained in the pdf file.
+Also some changes in original code from drake were made to allow, some of them are needed because are bugs and other is a minihack to the system. This changes must be made also in the last precompiled version from Drake v0.9.11 found at https://github.com/RobotLocomotion/drake/releases. This changes are explained in the pdf file.
 
 *Note: Put the folder QuadLoad in "drake-distro\drake\examples\"
